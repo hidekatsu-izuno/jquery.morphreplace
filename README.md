@@ -1,6 +1,6 @@
 # jquery.morphreplace
 
-replace jQuery replaceWith/All method with an another implementation by MorphDOM
+replace jQuery replaceWith/All method with an another implementation by [MorphDOM](https://github.com/patrick-steele-idem/morphdom)
 
 ## Installation
 
