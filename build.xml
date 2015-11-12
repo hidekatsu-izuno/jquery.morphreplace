@@ -1,0 +1,13 @@
+<project name="jquery.morphreplace" default="build">
+	<target name="build">
+		<java jar="tools/closure-compiler/compiler.jar" dir="src" fork="true">
+			<arg line="--charset UTF-8" />
+			<arg line="--language_in ECMASCRIPT6" />
+			<arg line="--language_out ECMASCRIPT3" />
+			<arg line="--process_common_js_modules" />
+			<arg line="--common_js_entry_module index.js" />
+			<arg line="--js_output_file ../jquery.morphreplace.min.js" />
+			<arg line="index.js lib/morphdom.js" />
+		</java>
+	</target>
+</project>

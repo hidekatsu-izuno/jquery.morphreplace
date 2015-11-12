@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>jquery.morphreplace demo</title>
+</head>
+<body>
+<h1>jquery.morphreplace DEMO</h1>
+<div style="text-align:center">
+<button id="start" type="button">START</button>
+</div>
+<div id="result">
+</div>
+
+<table id="table">
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="../jquery.morphreplace.min.js"></script>
+<script>
+var base = ['<table id="table">'];
+for (var i = 0; i < 100; i++) {
+	base.push('<tr>');
+	for (var j = 0; j < 100; j++) {
+		base.push('<td>' + i + ':' + j + '</td>');
+	}
+	base.push('</tr>');
+}
+base.push('</table>');
+base = base.join('');
+
+var replace = ['<table id="table">'];
+for (var i = 0; i < 100; i++) {
+	replace.push('<tr>');
+	for (var j = 0; j < 100; j++) {
+		if (i % 5 != 0) {
+			replace.push('<td>' + i + ':' + j + '</td>');
+		} else {
+			replace.push('<td>' + (100 - i) + ':' + (100 - j) + '</td>');
+		}
+	}
+	replace.push('</tr>');
+}
+replace.push('</table>');
+replace = replace.join('');
+
+$('#start').on('click', function() {
+	var time = $.now();
+	$('#table').replaceWith(replace).prop('offsetHeight');
+	console.log(($.now() - time));
+});
+
+(function() {
+	$('#table').append(base);
+})();
+</script>
+</body>
+</html>
